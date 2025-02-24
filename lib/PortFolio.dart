@@ -258,8 +258,8 @@ class PortfolioPage extends State<PortFolio>
           AnimatedPositioned(
             duration: Duration(seconds: 1),
             curve: Curves.easeInOut,
-            bottom: isScreenWidth ? 118 : 360,
-            left: isScreenWidth ? 115 : 365,
+            bottom: isScreenWidth ? 98 : 360,
+            left: isScreenWidth ? 148 : 365,
             child: FadeTransition(
               opacity: _opacityAnimation,
               child: SlideTransition(
@@ -464,7 +464,7 @@ class PortfolioPage extends State<PortFolio>
 
   Widget _buildEducationSection() {
     final screenWidth = MediaQuery.of(context).size.width;
-    final isScreenWidth = screenWidth > 600;
+    final isScreenWidth = screenWidth > 920;
 
     return Container(
       key: educationKey,
@@ -499,7 +499,8 @@ class PortfolioPage extends State<PortFolio>
                         'Quiede Milleth College for Men\nMedavakkam, Chennai\nI pursued a Bachelor of Computer Application at Quiede Milleth College for Men in Medavakkam, Chennai. The college provided a rich learning environment with dedicated faculty and modern facilities, fostering my academic and personal growth.'),
                   ],
                 )
-              : Column(
+              : Center(
+                  child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -514,7 +515,7 @@ class PortfolioPage extends State<PortFolio>
                         'Bachelor of Computer Application',
                         'Quiede Milleth College for Men\nMedavakkam, Chennai\nI pursued a Bachelor of Computer Application at Quiede Milleth College for Men in Medavakkam, Chennai. The college provided a rich learning environment with dedicated faculty and modern facilities, fostering my academic and personal growth.'),
                   ],
-                ),
+                )),
         ],
       ),
     );
@@ -748,7 +749,8 @@ class PortfolioPage extends State<PortFolio>
         _buildTextField(
             'Mobile Number', _phoneController, FontAwesomeIcons.phone),
         SizedBox(height: 15),
-        _buildTextField('Purpose of Contact', _messageController, FontAwesomeIcons.message,
+        _buildTextField(
+            'Purpose of Contact', _messageController, FontAwesomeIcons.message,
             maxLines: 5),
         SizedBox(height: 25),
         Center(
