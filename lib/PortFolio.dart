@@ -188,7 +188,7 @@ class PortfolioPage extends State<PortFolio>
                 child: Text(
                   'HI I AM',
                   style: TextStyle(
-                    // fontFamily: 'Roboto',
+                    fontFamily: 'Roboto',
                     fontSize: isScreenWidth ? 46 : 66.8,
                     fontWeight: FontWeight.bold,
                     fontStyle: FontStyle.italic,
@@ -748,7 +748,7 @@ class PortfolioPage extends State<PortFolio>
         _buildTextField(
             'Mobile Number', _phoneController, FontAwesomeIcons.phone),
         SizedBox(height: 15),
-        _buildTextField('Purpose of Contact', _messageController, IconData(0),
+        _buildTextField('Purpose of Contact', _messageController, FontAwesomeIcons.message,
             maxLines: 5),
         SizedBox(height: 25),
         Center(

@@ -61,25 +61,9 @@ flutter:
     - assets/dev.png
     - assets/sabeerg.gif
     - assets/sabeer.jpg
-    - assets/animal.jpg
-    - assets/barber1.png
-    - assets/basket_ball.jpeg
-    - assets/BlackAdam.jpeg
-    - assets/bus.jpg
-    - assets/bus2.png
-    - assets/cam.jpg
-    - assets/cricket.jpeg
-    - assets/Dracula.jpeg
-    - assets/fidget.jpg
-    - assets/mark.png
-    - assets/qr_code_image.png
-    - assets/scott.png
     - assets/syed1.jpg
-    - assets/syed.jpg
     - assets/syed1.png
-    - assets/train1.png
-    - assets/travis.png
-    - assets/syssor.png
+   
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
