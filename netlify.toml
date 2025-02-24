@@ -2,3 +2,16 @@
   from = "/*"
   to = "/web/index.html"
   status = 200
+
+
+[build]
+  command = "flutter build web --release"
+  publish = "build/web"
+
+[context.production]
+  command = "flutter build web --release"
+  publish = "build/web"
+
+[context.deploy-preview]
+  command = "flutter build web --release"
+  publish = "build/web"
