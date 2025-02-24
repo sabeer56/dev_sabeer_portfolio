@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       darkTheme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor:
-            Colors.black, // Set background color for scaffold
+            Colors.black, 
       ),
       debugShowCheckedModeBanner: false,
       title: 'PortFolio',
