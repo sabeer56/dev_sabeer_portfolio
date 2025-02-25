@@ -125,7 +125,7 @@ class PortfolioPage extends State<PortFolio>
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     final isScreenWidth = screenWidth > 600;
-
+ final isScreenWidthMain = screenWidth < 900;
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
@@ -151,7 +151,7 @@ class PortfolioPage extends State<PortFolio>
         child: Column(
           children: [
             _buildHeroSection(screenWidth, screenHeight, !isScreenWidth),
-            _buildAboutSection(!isScreenWidth),
+            _buildAboutSection(!isScreenWidth,isScreenWidthMain),
             _buildEducationSection(),
             _buildSkillsSection(!isScreenWidth),
             _buildContactSection(),
@@ -160,161 +160,160 @@ class PortfolioPage extends State<PortFolio>
       ),
     );
   }
+Widget _buildHeroSection(double screenWidth, double screenHeight, bool isScreenWidth) {
+  return Container(
+    key: homeKey,
+    height: isScreenWidth ? screenHeight * 0.6 : screenHeight,
+    child: Stack(
+      children: [
+        // Background Image
+        Positioned.fill(
+          child: Image.asset(
+            isScreenWidth ? 'assets/sabeerdev.jpg' : 'assets/sabeerdev.jpg',
+            fit: BoxFit.cover,
+            color: Colors.black.withOpacity(0.6),
+            colorBlendMode: BlendMode.darken,
+          ),
+        ),
 
-  Widget _buildHeroSection(
-      double screenWidth, double screenHeight, bool isScreenWidth) {
-    return Container(
-      key: homeKey,
-      height: isScreenWidth ? screenHeight * 0.6 : screenHeight,
-      child: Stack(
-        children: [
-          Positioned.fill(
-            child: Image.asset(
-              isScreenWidth ? 'assets/sabeerg.gif' : 'assets/sabeerg.gif',
-              fit: BoxFit.cover,
-              color: Colors.black.withOpacity(0.6),
-              colorBlendMode: BlendMode.darken,
-            ),
+        // "HI I AM" Text
+        Align(
+          alignment: Alignment(
+            isScreenWidth ? -0.5 : -0.6, // Horizontal position
+            isScreenWidth ? -0.2 : -0.2, // Vertical position
           ),
-          AnimatedPositioned(
-            duration: Duration(seconds: 1),
-            curve: Curves.easeInOut,
-            bottom: isScreenWidth ? 220 : 450,
-            left: isScreenWidth ? 90 : 250,
-            child: FadeTransition(
-              opacity: _opacityAnimation,
-              child: SlideTransition(
-                position: _slideAnimation,
-                child: Text(
-                  'HI I AM',
-                  style: TextStyle(
-                    fontFamily: 'Roboto',
-                    fontSize: isScreenWidth ? 46 : 66.8,
-                    fontWeight: FontWeight.bold,
-                    fontStyle: FontStyle.italic,
-                    color: Colors.white,
-                  ),
+          child: FadeTransition(
+            opacity: _opacityAnimation,
+            child: SlideTransition(
+              position: _slideAnimation,
+              child: Text(
+                'HI I AM',
+                style: TextStyle(
+                  fontFamily: 'Roboto',
+                  fontSize: isScreenWidth ? screenWidth * 0.05 : screenWidth * 0.08,
+                  fontWeight: FontWeight.bold,
+                  fontStyle: FontStyle.italic,
+                  color: Colors.white,
                 ),
               ),
             ),
           ),
-          AnimatedPositioned(
-            duration: Duration(seconds: 1),
-            curve: Curves.easeInOut,
-            bottom: isScreenWidth ? 190 : 420,
-            left: isScreenWidth ? 200 : 360,
-            child: FadeTransition(
-              opacity: _opacityAnimation,
-              child: SlideTransition(
-                position: _slideAnimation,
-                child: Text(
-                  'Syed Sabeer',
-                  style: TextStyle(
-                    fontSize: isScreenWidth ? 24 : 34.8,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.amber,
-                  ),
-                ),
-              ),
-            ),
+        ),
+
+        // "Syed Sabeer" Text
+        Align(
+          alignment: Alignment(
+            isScreenWidth ? -0.1 : 0.2, // Horizontal position
+            isScreenWidth ? -0.12 : -0.1, // Vertical position
           ),
-          AnimatedPositioned(
-            duration: Duration(seconds: 1),
-            curve: Curves.easeInOut,
-            bottom: isScreenWidth ? 165 : 400,
-            left: isScreenWidth ? 105 : 300,
-            child: FadeTransition(
-              opacity: _opacityAnimation,
-              child: SlideTransition(
-                position: _slideAnimation,
-                child: Text(
-                  'FullStack Developer',
-                  style: TextStyle(
-                    fontSize: isScreenWidth ? 24 : 14.8,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.amber,
-                  ),
-                ),
-              ),
-            ),
-          ),
-          AnimatedPositioned(
-            duration: Duration(seconds: 1),
-            curve: Curves.easeInOut,
-            bottom: isScreenWidth ? 165 : 400,
-            left: isScreenWidth ? 65 : 270,
-            child: FadeTransition(
-              opacity: _opacityAnimation,
-              child: SlideTransition(
-                position: _slideAnimation,
-                child: Icon(
-                  Icons.computer,
+          child: FadeTransition(
+            opacity: _opacityAnimation,
+            child: SlideTransition(
+              position: _slideAnimation,
+              child: Text(
+                'Syed Sabeer',
+                style: TextStyle(
+                  fontSize: isScreenWidth ? screenWidth * 0.03 : screenWidth * 0.05,
+                  fontWeight: FontWeight.bold,
                   color: Colors.amber,
-                  size: isScreenWidth ? 36 : 24,
                 ),
               ),
             ),
           ),
-          AnimatedPositioned(
-            duration: Duration(seconds: 1),
-            curve: Curves.easeInOut,
-            bottom: isScreenWidth ? 98 : 360,
-            left: isScreenWidth ? 148 : 365,
-            child: FadeTransition(
-              opacity: _opacityAnimation,
-              child: SlideTransition(
-                position: _slideAnimation,
-                child: TextButton(
-                  onPressed: () {},
-                  style: TextButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(255, 251, 158, 234),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        ),
+
+        // "FullStack Developer" Text
+        Align(
+          alignment: Alignment(
+            isScreenWidth ? -0.4 : 0.6, // Horizontal position
+            isScreenWidth ? -0.050 : 0.1, // Vertical position
+          ),
+          child: FadeTransition(
+            opacity: _opacityAnimation,
+            child: SlideTransition(
+              position: _slideAnimation,
+              child: Text(
+                'FullStack Developer',
+                style: TextStyle(
+                  fontSize: isScreenWidth ? screenWidth * 0.025 : screenWidth * 0.04,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.amber,
+                ),
+              ),
+            ),
+          ),
+        ),
+
+        // Computer Icon
+        Align(
+          alignment: Alignment(
+            isScreenWidth ? -0.035 : -0.037, // Horizontal position
+            isScreenWidth ? -0.040 : 0.1, // Vertical position
+          ),
+          child: FadeTransition(
+            opacity: _opacityAnimation,
+            child: SlideTransition(
+              position: _slideAnimation,
+              child: Icon(
+                Icons.computer,
+                color: Colors.black,
+                size: isScreenWidth ? screenWidth * 0.04 : screenWidth * 0.04,
+              ),
+            ),
+          ),
+        ),
+
+        // Download Resume Button
+        Align(
+          alignment: Alignment(
+            isScreenWidth ? -0.090 : -0.2, // Horizontal position
+            isScreenWidth ? 0.095 : 0.35, // Vertical position
+          ),
+          child: FadeTransition(
+            opacity: _opacityAnimation,
+            child: SlideTransition(
+              position: _slideAnimation,
+              child: TextButton(
+                onPressed: () async {
+                  const resumeUrl =
+                      'https://drive.google.com/file/d/1xuZnwmNRB5ufLD_Go9DggUmChaa4xuNh/view?usp=sharing';
+                  if (await canLaunch(resumeUrl)) {
+                    await launch(resumeUrl);
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Could not launch the download link')),
+                    );
+                  }
+                },
+                style: TextButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 251, 158, 234),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(55),
                   ),
-                  child: TextButton(
-                    onPressed: () async {
-                      const resumeUrl =
-                          'https://drive.google.com/file/d/1xuZnwmNRB5ufLD_Go9DggUmChaa4xuNh/view?usp=sharing';
-                      if (await canLaunch(resumeUrl)) {
-                        await launch(resumeUrl);
-                      } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                              content:
-                                  Text('Could not launch the download link')),
-                        );
-                      }
-                    },
-                    style: TextButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(255, 251, 158, 234),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    ),
-                    child: Text(
-                      'Download Resume',
-                      style: TextStyle(
-                        fontSize: isScreenWidth ? 21.8 : 12.8,
-                        color: Colors.black87,
-                      ),
-                    ),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: isScreenWidth ? 20 : 10,
+                    vertical: isScreenWidth ? 6 : 8,
+                  ),
+                ),
+                child: Text(
+                  'Download Resume',
+                  style: TextStyle(
+                    fontSize: isScreenWidth ? screenWidth * 0.02 : screenWidth * 0.04,
+                    color: Colors.black87,
                   ),
                 ),
               ),
             ),
           ),
-        ],
-      ),
-    );
-  }
+        ),
+      ],
+    ),
+  );
+}
 
   // Rest of the code remains the same...
-  Widget _buildAboutSection(bool isScreenWidth) {
-    return Container(
+  Widget _buildAboutSection(bool isScreenWidth,bool isScreenWidthMain) {
+    return isScreenWidthMain ? Container(
       key: aboutKey,
       color: Colors.black,
       padding: EdgeInsets.all(20),
@@ -352,16 +351,17 @@ class PortfolioPage extends State<PortFolio>
                         SizedBox(height: 20),
                         Row(
                           children: [
+                            
                             Expanded(
                               child: Container(
                                 width: 200,
-                                height: 400,
+                                height: isScreenWidth ? 550:700,
                                 child: Text(
                                   isScreenWidth
                                       ? 'A results-driven full-stack developer with expertise in Vue.js, Go (Golang), Flutter, and real-time application development, specializing in building scalable, \n user-centric solutions. Proficient in REST APIs, WebSockets, database management, and cross-platform mobile development, I have a proven track record of delivering innovative applications that solve complex problems and enhance user experiences.'
                                       : 'I am Syed Sabeer, a full-stack developer specializing in Vue.js, Go (Golang), and real-time application development. My expertise lies in designing, developing, and optimizing high-performance, scalable applications that offer seamless user experiences across web and mobile platforms. My standout achievement is the development of a real-time trading application that seamlessly integrates third-party REST APIs and WebSockets to provide live stock updates and enable dynamic trading. The Golang-powered backend efficiently processes stock market data and leverages WebSockets for instant communication, ensuring a highly responsive trading experience. On the frontend, Vue.js and Vuetify deliver an intuitive and visually engaging interface, while Flutter extends accessibility across mobile platforms, enabling users to trade anytime, anywhere. With extensive experience in real-time systems, API integrations, and database management, I focus on performance optimization, scalability, and user-centric solutions. I am also proficient in cross-platform mobile development with Flutter, ensuring a seamless, consistent experience across Android and iOS devices. My passion for innovation and continuous learning drives me to solve complex challenges, push technological boundaries, and deliver high-impact solutions that enhance user engagement and operational efficiency.',
                                   style: TextStyle(
-                                    fontSize: isScreenWidth ? 10 : 18,
+                                    fontSize: isScreenWidth ? 10 : 14,
                                     color: Colors.white,
                                     height: 1.5, // Improve line spacing
                                   ),
@@ -392,7 +392,7 @@ class PortfolioPage extends State<PortFolio>
                             ),
                           ],
                         ),
-                        SizedBox(height: 20),
+                      
                         Row(
                           children: [
                             Icon(
@@ -421,13 +421,159 @@ class PortfolioPage extends State<PortFolio>
                                 ),
                               ],
                             ),
-                            SizedBox(width: 40),
+                           SizedBox(width:  isScreenWidth? 10:100),
                             Icon(
                               Icons.email,
                               color: Colors.amber,
                               size: 20,
                             ),
+                            
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Email',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.amber,
+                                  ),
+                                ),
+                                Text(
+                                  'syedsabeera391@gmail.com',
+                                  style: TextStyle(
+                                    fontSize: isScreenWidth ? 7 : 18,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    ):Container(
+      key: aboutKey,
+      color: Colors.black,
+      padding: EdgeInsets.all(20),
+      child: FadeTransition(
+        opacity: _opacityAnimation,
+        child: SlideTransition(
+          position: _slideAnimation,
+          child: Card(
+            elevation: 10,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            color: Colors.grey[900],
+            child: Padding(
+              padding: EdgeInsets.all(10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Expanded(
+                    flex: 3,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Center(
+                          child: Text(
+                            'About Me',
+                            style: TextStyle(
+                              fontSize: 28,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.amber,
+                              fontFamily: 'Pacifico', // Use a custom font
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 20),
+                        Row(
+                          children: [
+                            
+                            Expanded(
+                              child: Container(
+                                width: 200,
+                                height: 300,
+                                child: Text(
+                                  isScreenWidth
+                                      ? 'A results-driven full-stack developer with expertise in Vue.js, Go (Golang), Flutter, and real-time application development, specializing in building scalable, \n user-centric solutions. Proficient in REST APIs, WebSockets, database management, and cross-platform mobile development, I have a proven track record of delivering innovative applications that solve complex problems and enhance user experiences.'
+                                      : 'I am Syed Sabeer, a full-stack developer specializing in Vue.js, Go (Golang), and real-time application development. My expertise lies in designing, developing, and optimizing high-performance, scalable applications that offer seamless user experiences across web and mobile platforms. My standout achievement is the development of a real-time trading application that seamlessly integrates third-party REST APIs and WebSockets to provide live stock updates and enable dynamic trading. The Golang-powered backend efficiently processes stock market data and leverages WebSockets for instant communication, ensuring a highly responsive trading experience. On the frontend, Vue.js and Vuetify deliver an intuitive and visually engaging interface, while Flutter extends accessibility across mobile platforms, enabling users to trade anytime, anywhere. With extensive experience in real-time systems, API integrations, and database management, I focus on performance optimization, scalability, and user-centric solutions. I am also proficient in cross-platform mobile development with Flutter, ensuring a seamless, consistent experience across Android and iOS devices. My passion for innovation and continuous learning drives me to solve complex challenges, push technological boundaries, and deliver high-impact solutions that enhance user engagement and operational efficiency.',
+                                  style: TextStyle(
+                                    fontSize: isScreenWidth ? 10 : 15,
+                                    color: Colors.white,
+                                    height: 1.5, // Improve line spacing
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(width: 20),
+                            Container(
+                              width: 170,
+                              height: 250,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.5),
+                                    blurRadius: 10,
+                                    offset: Offset(0, 5),
+                                  ),
+                                ],
+                              ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(20),
+                                child: Image.asset(
+                                  'assets/sabeer.jpg',
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.phone,
+                              color: Colors.amber,
+                              size: 20,
+                            ),
                             SizedBox(width: 10),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Phone',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.amber,
+                                  ),
+                                ),
+                                Text(
+                                  '8608670981',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
+                           SizedBox(width:  isScreenWidth? 10:300),
+                            Icon(
+                              Icons.email,
+                              color: Colors.amber,
+                              size: 20,
+                            ),
+                            
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [

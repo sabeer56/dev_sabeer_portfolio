@@ -59,6 +59,7 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
+    - assets/sabeerdev.jpg
     - assets/dev.png
     - assets/sabeerg.gif
     - assets/sabeer.jpg
