@@ -124,7 +124,7 @@ class PortfolioPage extends State<PortFolio>
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
-    final isScreenWidth = screenWidth > 600;
+    final isScreenWidth = screenWidth > 550;
  final isScreenWidthMain = screenWidth < 900;
     return Scaffold(
       appBar: AppBar(
@@ -312,302 +312,246 @@ Widget _buildHeroSection(double screenWidth, double screenHeight, bool isScreenW
 }
 
   // Rest of the code remains the same...
-  Widget _buildAboutSection(bool isScreenWidth,bool isScreenWidthMain) {
-    return isScreenWidthMain ? Container(
-      key: aboutKey,
-      color: Colors.black,
-      padding: EdgeInsets.all(20),
-      child: FadeTransition(
-        opacity: _opacityAnimation,
-        child: SlideTransition(
-          position: _slideAnimation,
-          child: Card(
-            elevation: 10,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-            ),
-            color: Colors.grey[900],
-            child: Padding(
-              padding: EdgeInsets.all(20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Expanded(
-                    flex: 3,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Center(
-                          child: Text(
-                            'About Me',
-                            style: TextStyle(
-                              fontSize: 28,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.amber,
-                              fontFamily: 'Pacifico', // Use a custom font
+ Widget _buildAboutSection(bool isScreenWidth, bool isScreenWidthMain) {
+  return Container(
+    key: aboutKey,
+    color: Colors.black,
+    padding: EdgeInsets.all(20),
+    child: FadeTransition(
+      opacity: _opacityAnimation,
+      child: SlideTransition(
+        position: _slideAnimation,
+        child: Card(
+          elevation: 10,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          color: Colors.grey[900],
+          child: Padding(
+            padding: EdgeInsets.all(20),
+            child: isScreenWidthMain
+                ? Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        'About Me',
+                        style: TextStyle(
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.amber,
+                          fontFamily: 'Pacifico',
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      Container(
+                        width: 170,
+                        height: 250,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.5),
+                              blurRadius: 10,
+                              offset: Offset(0, 5),
                             ),
+                          ],
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Image.asset(
+                            'assets/sabeer.jpg',
+                            fit: BoxFit.cover,
                           ),
                         ),
-                        SizedBox(height: 20),
-                        Row(
-                          children: [
-                            
-                            Expanded(
-                              child: Container(
-                                width: 200,
-                                height: isScreenWidth ? 550:700,
-                                child: Text(
-                                  isScreenWidth
-                                      ? 'A results-driven full-stack developer with expertise in Vue.js, Go (Golang), Flutter, and real-time application development, specializing in building scalable, \n user-centric solutions. Proficient in REST APIs, WebSockets, database management, and cross-platform mobile development, I have a proven track record of delivering innovative applications that solve complex problems and enhance user experiences.'
-                                      : 'I am Syed Sabeer, a full-stack developer specializing in Vue.js, Go (Golang), and real-time application development. My expertise lies in designing, developing, and optimizing high-performance, scalable applications that offer seamless user experiences across web and mobile platforms. My standout achievement is the development of a real-time trading application that seamlessly integrates third-party REST APIs and WebSockets to provide live stock updates and enable dynamic trading. The Golang-powered backend efficiently processes stock market data and leverages WebSockets for instant communication, ensuring a highly responsive trading experience. On the frontend, Vue.js and Vuetify deliver an intuitive and visually engaging interface, while Flutter extends accessibility across mobile platforms, enabling users to trade anytime, anywhere. With extensive experience in real-time systems, API integrations, and database management, I focus on performance optimization, scalability, and user-centric solutions. I am also proficient in cross-platform mobile development with Flutter, ensuring a seamless, consistent experience across Android and iOS devices. My passion for innovation and continuous learning drives me to solve complex challenges, push technological boundaries, and deliver high-impact solutions that enhance user engagement and operational efficiency.',
-                                  style: TextStyle(
-                                    fontSize: isScreenWidth ? 10 : 14,
-                                    color: Colors.white,
-                                    height: 1.5, // Improve line spacing
-                                  ),
-                                ),
-                              ),
-                            ),
-                            SizedBox(width: 20),
-                            Container(
-                              width: 170,
-                              height: 250,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withOpacity(0.5),
-                                    blurRadius: 10,
-                                    offset: Offset(0, 5),
-                                  ),
-                                ],
-                              ),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(20),
-                                child: Image.asset(
-                                  'assets/sabeer.jpg',
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                          ],
+                      ),
+                      SizedBox(height: 20),
+                      Text(
+                        'A results-driven full-stack developer with expertise in Vue.js, Go (Golang), Flutter, and real-time application development, specializing in building scalable, user-centric solutions. Proficient in REST APIs, WebSockets, database management, and cross-platform mobile development, I have a proven track record of delivering innovative applications that solve complex problems and enhance user experiences.',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.white,
+                          height: 1.5,
                         ),
-                      
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.phone,
-                              color: Colors.amber,
-                              size: 20,
-                            ),
-                            SizedBox(width: 10),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Phone',
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.amber,
-                                  ),
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.phone,
+                            color: Colors.amber,
+                            size: 20,
+                          ),
+                          SizedBox(width: 10),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Phone',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.amber,
                                 ),
-                                Text(
-                                  '8608670981',
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.white,
-                                  ),
+                              ),
+                              Text(
+                                '8608670981',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(width: 20),
+                          Icon(
+                            Icons.email,
+                            color: Colors.amber,
+                            size: 20,
+                          ),
+                          SizedBox(width: 10),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Email',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.amber,
+                                ),
+                              ),
+                              Text(
+                                'syedsabeera391@gmail.com',
+                                style: TextStyle(
+                                  fontSize: 6,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  )
+                : Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        flex: 3,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'About Me',
+                              style: TextStyle(
+                                fontSize: 28,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.amber,
+                                fontFamily: 'Pacifico',
+                              ),
+                            ),
+                            SizedBox(height: 20),
+                            Text(
+                              'A results-driven full-stack developer with expertise in Vue.js, Go (Golang), Flutter, and real-time application development, specializing in building scalable, user-centric solutions. Proficient in REST APIs, WebSockets, database management, and cross-platform mobile development, I have a proven track record of delivering innovative applications that solve complex problems and enhance user experiences.',
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.white,
+                                height: 1.5,
+                              ),
+                            ),
+                            SizedBox(height: 20),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.phone,
+                                  color: Colors.amber,
+                                  size: 20,
+                                ),
+                                SizedBox(width: 10),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Phone',
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.amber,
+                                      ),
+                                    ),
+                                    Text(
+                                      '8608670981',
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(width: 20),
+                                Icon(
+                                  Icons.email,
+                                  color: Colors.amber,
+                                  size: 20,
+                                ),
+                                SizedBox(width: 10),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Email',
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.amber,
+                                      ),
+                                    ),
+                                    Text(
+                                      'syedsabeera391@gmail.com',
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
-                           SizedBox(width:  isScreenWidth? 10:100),
-                            Icon(
-                              Icons.email,
-                              color: Colors.amber,
-                              size: 20,
-                            ),
-                            
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Email',
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.amber,
-                                  ),
-                                ),
-                                Text(
-                                  'syedsabeera391@gmail.com',
-                                  style: TextStyle(
-                                    fontSize: isScreenWidth ? 7 : 18,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ],
+                          ],
+                        ),
+                      ),
+                      SizedBox(width: 20),
+                      Container(
+                        width: 170,
+                        height: 250,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.5),
+                              blurRadius: 10,
+                              offset: Offset(0, 5),
                             ),
                           ],
                         ),
-                      ],
-                    ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Image.asset(
+                            'assets/sabeer.jpg',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
           ),
         ),
       ),
-    ):Container(
-      key: aboutKey,
-      color: Colors.black,
-      padding: EdgeInsets.all(20),
-      child: FadeTransition(
-        opacity: _opacityAnimation,
-        child: SlideTransition(
-          position: _slideAnimation,
-          child: Card(
-            elevation: 10,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-            ),
-            color: Colors.grey[900],
-            child: Padding(
-              padding: EdgeInsets.all(10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Expanded(
-                    flex: 3,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Center(
-                          child: Text(
-                            'About Me',
-                            style: TextStyle(
-                              fontSize: 28,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.amber,
-                              fontFamily: 'Pacifico', // Use a custom font
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 20),
-                        Row(
-                          children: [
-                            
-                            Expanded(
-                              child: Container(
-                                width: 200,
-                                height: 300,
-                                child: Text(
-                                  isScreenWidth
-                                      ? 'A results-driven full-stack developer with expertise in Vue.js, Go (Golang), Flutter, and real-time application development, specializing in building scalable, \n user-centric solutions. Proficient in REST APIs, WebSockets, database management, and cross-platform mobile development, I have a proven track record of delivering innovative applications that solve complex problems and enhance user experiences.'
-                                      : 'I am Syed Sabeer, a full-stack developer specializing in Vue.js, Go (Golang), and real-time application development. My expertise lies in designing, developing, and optimizing high-performance, scalable applications that offer seamless user experiences across web and mobile platforms. My standout achievement is the development of a real-time trading application that seamlessly integrates third-party REST APIs and WebSockets to provide live stock updates and enable dynamic trading. The Golang-powered backend efficiently processes stock market data and leverages WebSockets for instant communication, ensuring a highly responsive trading experience. On the frontend, Vue.js and Vuetify deliver an intuitive and visually engaging interface, while Flutter extends accessibility across mobile platforms, enabling users to trade anytime, anywhere. With extensive experience in real-time systems, API integrations, and database management, I focus on performance optimization, scalability, and user-centric solutions. I am also proficient in cross-platform mobile development with Flutter, ensuring a seamless, consistent experience across Android and iOS devices. My passion for innovation and continuous learning drives me to solve complex challenges, push technological boundaries, and deliver high-impact solutions that enhance user engagement and operational efficiency.',
-                                  style: TextStyle(
-                                    fontSize: isScreenWidth ? 10 : 15,
-                                    color: Colors.white,
-                                    height: 1.5, // Improve line spacing
-                                  ),
-                                ),
-                              ),
-                            ),
-                            SizedBox(width: 20),
-                            Container(
-                              width: 170,
-                              height: 250,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withOpacity(0.5),
-                                    blurRadius: 10,
-                                    offset: Offset(0, 5),
-                                  ),
-                                ],
-                              ),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(20),
-                                child: Image.asset(
-                                  'assets/sabeer.jpg',
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.phone,
-                              color: Colors.amber,
-                              size: 20,
-                            ),
-                            SizedBox(width: 10),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Phone',
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.amber,
-                                  ),
-                                ),
-                                Text(
-                                  '8608670981',
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ],
-                            ),
-                           SizedBox(width:  isScreenWidth? 10:300),
-                            Icon(
-                              Icons.email,
-                              color: Colors.amber,
-                              size: 20,
-                            ),
-                            
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Email',
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.amber,
-                                  ),
-                                ),
-                                Text(
-                                  'syedsabeera391@gmail.com',
-                                  style: TextStyle(
-                                    fontSize: isScreenWidth ? 7 : 18,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
+    ),
+  );
+}
   Widget _buildEducationSection() {
     final screenWidth = MediaQuery.of(context).size.width;
     final isScreenWidth = screenWidth > 920;
